@@ -15,7 +15,7 @@ namespace Episode1.Models
         public bool IsActive { get; private set; }
         public DateTime UpdatedAt { get; private set; }
         public decimal Funds { get; private set; }
-        public IEnumerable<Order> Orders { get;  {return _orders; } }
+       
 
         public User(string email, string password)
 
