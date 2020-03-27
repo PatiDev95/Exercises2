@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static Episode1.Models.Delegates;
 
 namespace Episode1
 {
@@ -10,8 +11,8 @@ namespace Episode1
     {
         static void Main(string[] args)
         {
-            var delegates = new Delegates();
-            delegates.Test();
+            var lambdaExpressions = new LambdaExpressions();
+            lambdaExpressions.Test();
         }
     }
 }

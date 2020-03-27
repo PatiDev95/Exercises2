@@ -69,5 +69,59 @@ namespace Episode1.Models
         {
             Console.WriteLine($"Hello {message} !");
         }
+
+        public class LambdaExpressions
+        {
+            public delegate void Write(string message);
+            public delegate int Add(int x, int y);
+            public delegate void Alert(int change);
+
+            public void Test()
+            {
+                Action writer = () => Console.WriteLine("Writing...");
+                Action<string, int> advanceWriter = (message, number)  => 
+                                    Console.WriteLine($"{message}, {number}");
+                writer();
+
+                Func<int, int, int> adder = (x, y) => { return x + y; };
+                advanceWriter("Hello", 5);
+                var sum = adder(1, 2);
+                advanceWriter("Sum", sum);
+
+                Action<int, string> logger = (temperature, message) =>
+                {
+                    Console.WriteLine($"Temperature is at: {temperature} C. {message}");
+                };
+
+                CheckTemperature(t1 => logger(t1, "To low!)"), t2 => logger(t2, "Optimal!)"), t3 => logger(t3, "To high!)"));
+            }
+
+            public static void CheckTemperature(Action<int> tooLow, Action<int> optimal, Action<int> tooHigh)
+            {
+                var temperature = 10;
+                var random = new Random();
+
+                while (true)
+                {
+                    var change = random.Next(-5, 5);
+                    temperature += change;
+                    Console.WriteLine($"Temperature is at: {temperature} C.");
+                    if (temperature <= 0)
+                    {
+                        tooLow(temperature);
+                    }
+                    else if (temperature > 0 && temperature <= 10)
+                    {
+                        optimal(temperature);
+                    }
+                    else
+                    {
+                        tooHigh(temperature);
+                    }
+                    Thread.Sleep(500);
+                }
+            }
+        }
+
     }
 }
