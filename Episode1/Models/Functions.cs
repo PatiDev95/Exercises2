@@ -122,6 +122,58 @@ namespace Episode1.Models
                 }
             }
         }
+    }
+    public class Events
+    {
+        public delegate void UpdateStatus(string status);
 
+        public event UpdateStatus StatusUpdate;
+
+        public EventHandler <StatusEventArgs> StatusUpdateAgain;
+
+        public void StartUpdatingStatus()
+        {
+            while(true)
+            {
+                var message = $"status, ticks {DateTime.UtcNow.Ticks}";
+                StatusUpdateAgain?.Invoke(this, new StatusEventArgs(message));
+                Thread.Sleep(500);
+            }
+
+        }
+    }
+
+    public class StatusEventArgs : EventArgs
+    {
+        public string Status { get; }
+        public StatusEventArgs(string status)
+        {
+            Status = status;
+        }
+    }
+
+    public class EventSandbox
+    {
+        public void Test()
+        {
+            var events = new Events();
+            events.StatusUpdateAgain += (sender, EventArgs) =>
+            {
+                Console.WriteLine(EventArgs.Status);
+            };
+            events.StatusUpdate += DisplayStatus2;
+            events.StatusUpdate -= DisplayStatus2;
+            events.StartUpdatingStatus();
+        }
+
+        public void DisplayStatus (string message)
+        {
+            Console.WriteLine(message);
+        }
+
+        public void DisplayStatus2(string message)
+        {
+            Console.WriteLine($"2 {message}");
+        }
     }
 }
