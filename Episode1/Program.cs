@@ -11,11 +11,8 @@ namespace Episode1
     {
         static void Main(string[] args)
         {
-            var text = "abc";
-            if (text.Empty()) 
-            {
-                Console.WriteLine("Hello");
-            }
+            var enumerations = new Enumerations();
+            enumerations.Test();
         }
     }
 }
