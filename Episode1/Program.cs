@@ -11,8 +11,11 @@ namespace Episode1
     {
         static void Main(string[] args)
         {
-            var eventSandbox = new EventSandbox();
-            eventSandbox.Test();
+            var text = "abc";
+            if (text.Empty()) 
+            {
+                Console.WriteLine("Hello");
+            }
         }
     }
 }
