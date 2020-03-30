@@ -11,6 +11,7 @@ namespace Episode1.Models
         {
             var numbersList = Enumerable.Range(1, 100).ToList();
             IEnumerable<int> numbers = GetNumbers();
+
             foreach(var number in numbers)
             {
                 Console.WriteLine(number);
@@ -19,6 +20,11 @@ namespace Episode1.Models
             while(enumerator.MoveNext())
             {
                 Console.WriteLine(enumerator.Current);
+            }
+
+            var users = GetUsers().ToList();
+            foreach (var user in users)
+            {
             }
         }
 
@@ -30,5 +36,10 @@ namespace Episode1.Models
             yield return 4;
             yield return 5;
         }
+
+       public IQueryable<User> GetUsers()
+       {
+           return new List<User>().AsQueryable();
+       }
     }
 }
