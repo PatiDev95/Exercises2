@@ -36,8 +36,16 @@ namespace Episode1.Models
             Console.WriteLine($"Email: {email}.");
 
             var databaseTypes = Assembly.GetEntryAssembly()
-                                        .GetType()
-                                        where(x => x.Name.Contains("Databae"));
+                                        .GetTypes()
+                                        .Where(x => x.Name.Contains("Databae"));
+
+            foreach(var databaseType in databaseTypes)
+            {
+                Console.WriteLine($"{databaseType}");
+            }
+
+            var user2 = Activator.CreateInstance(typeof(User), new[] { "user2@email.com", "secret" });
+                Console.WriteLine($"{user.Email}");
 
 
         }
