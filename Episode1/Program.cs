@@ -11,8 +11,9 @@ namespace Episode1
     {
         static void Main(string[] args)
         {
-            var enumerations = new Enumerations();
-            enumerations.Test();
+            var reflections = new Reflections();
+            reflections.Test();
+
         }
     }
 }
