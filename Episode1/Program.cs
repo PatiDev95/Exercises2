@@ -11,9 +11,8 @@ namespace Episode1
     {
         static void Main(string[] args)
         {
-            var asynchronous = new Asynchronous();
-            asynchronous.Test().Wait();
-
+            var paralellism = new Paralellism();
+            paralellism.Test();
         }
     }
 }
