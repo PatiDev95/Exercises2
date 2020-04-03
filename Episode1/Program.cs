@@ -11,8 +11,8 @@ namespace Episode1
     {
         static void Main(string[] args)
         {
-            var atributes = new Attributes();
-            atributes.Test();
+            var asynchronous = new Asynchronous();
+            asynchronous.Test().Wait();
 
         }
     }

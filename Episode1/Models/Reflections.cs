@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Episode1.Models
 {
@@ -96,6 +98,24 @@ namespace Episode1.Models
         public UserPasswordAttribute(int lenght = 4)
         {
             Lenght = lenght;
+        }
+    }
+
+    public class Asynchronous
+    {
+        public async Task Test()
+        {
+            var content = await GetContetAsync();
+            Console.WriteLine(content);
+        }
+
+        public async Task<string> GetContetAsync()
+        {
+            var httpClient = new HttpClient();
+            var responce = await httpClient.GetAsync("https://jsonplaceholder.typicode.com/photos");
+            var content = await responce.Content.ReadAsStringAsync();
+
+            return content;
         }
     }
 
