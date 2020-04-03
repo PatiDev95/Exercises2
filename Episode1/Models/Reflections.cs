@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 
 namespace Episode1.Models
 {
-    class Reflections
+    public class Reflections
     {
         public void Test()
         {
@@ -48,6 +49,27 @@ namespace Episode1.Models
                 Console.WriteLine($"{user.Email}");
 
 
+        }
+    }
+    public class Dynamics
+    {
+        public void Test()
+        {
+         dynamic user = new User("user1@gmail.com", "secret");
+        Console.WriteLine($"{user.Email}");
+            user.SetEmail("user2@email.com");
+            Console.WriteLine($"{user.Email}");
+
+            dynamic anything = new ExpandoObject();
+            anything.id = 1;
+            anything.name = "me";
+
+            Console.WriteLine($"{anything.id} {anything.name}");
+
+            foreach(var property in anything)
+            {
+                Console.WriteLine($"{property.Key}: {property.Value}");
+            }
         }
     }
 }
