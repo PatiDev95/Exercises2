@@ -11,8 +11,8 @@ namespace Episode1
     {
         static void Main(string[] args)
         {
-            var dynamics = new Dynamics();
-            dynamics.Test();
+            var atributes = new Attributes();
+            atributes.Test();
 
         }
     }
