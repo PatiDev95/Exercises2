@@ -29,7 +29,7 @@ namespace Episode1.Models
 
     public class Database : IDatabase
     {
-        public bool IsConnected => throw new NotImplementedException();
+        public bool IsConnected { get; protected set; }
 
         public void CancelOrder(string orderId)
         {
@@ -38,7 +38,12 @@ namespace Episode1.Models
 
         public void Connect()
         {
-            throw new NotImplementedException();
+            if(IsConnected)
+            {
+                return;
+            }
+
+            IsConnected = true;
         }
 
         public Order GetOrder(int id)

@@ -11,8 +11,7 @@ namespace Episode1
     {
         static void Main(string[] args)
         {
-            var paralellism = new Paralellism();
-            paralellism.Test();
+           
         }
     }
 }
